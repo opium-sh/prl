@@ -1,0 +1,61 @@
+image: registry.gitlab.com/opium-sh/prl/ci-prl:0.2
+
+variables:
+  DOCKER_DRIVER: overlay2
+stages:
+  - run_examples
+  - coverage
+  - unit_tests
+  - integration_tests
+cache:
+  key: ${CI_PROJECT_ID}
+  paths:
+    - .cache/pip
+    - venv/
+
+run_examples:
+  stage: run_examples
+  variables:
+    ITERATIONS_NUMBER: 3
+  script:
+    - virtualenv venv
+    - source venv/bin/activate
+    - pip install -e .
+    - pip install -r requirements.txt
+    - ls examples/*.py|xargs -t -n 1 -I '{}' timeout 4m python '{}' --n_iterations $ITERATIONS_NUMBER
+
+coverage:
+  stage: coverage
+  when: manual
+  variables:
+    ITERATIONS_NUMBER: 3
+  artifacts:
+    name: "html_coverage"
+    paths:
+      - htmlcov/
+      - coverage.svg
+  script:
+    - virtualenv venv
+    - source venv/bin/activate
+    - pip install -e .
+    - pip install -r requirements.txt
+    - ls examples/*.py|xargs -t -n 1 -I '{}' timeout 4m sh -c "coverage run --omit \"venv/lib/python3.6/*\" -a '{}' --n_iterations $ITERATIONS_NUMBER"
+    - coverage report
+    - coverage html
+    - CI/generate-bages.sh
+
+unit_tests:
+  stage: unit_tests
+  script:
+    - virtualenv venv
+    - source venv/bin/activate
+    - pip install -r requirements.txt
+    - python -m unittest discover $CI_PROJECT_DIR/tests/unit_tests
+
+.integration_tests:
+  stage: integration_tests
+  script:
+    - virtualenv venv
+    - source venv/bin/activate
+    - pip install -r requirements.txt
+    - python -m unittest discover $CI_PROJECT_DIR/tests/integration_tests
