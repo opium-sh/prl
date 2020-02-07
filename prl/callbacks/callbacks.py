@@ -144,6 +144,8 @@ class BaseAgentCheckpoint(AgentCallback):
         mean_test_reward = np.mean(agent_logs[0]["test_episode_total_reward"])
 
         if mean_test_reward > self.best_score or not self.save_best_only:
+            if mean_test_reward > self.best_score:
+                self.best_score = mean_test_reward
             self._save_agent(agent, mean_test_reward)
 
     def on_iteration_end(self, agent: AgentABC):
