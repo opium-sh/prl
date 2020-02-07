@@ -16,7 +16,7 @@ jobs:
         python-version: 3.8
     - name: Install requirements
       run: |
-            pip install virtualenv
+            pip install virtualenv torch torchvision
             virtualenv venv
             source venv/bin/activate
             pip install -e .
