@@ -8,7 +8,8 @@
 
 This is a reinforcement learning framework made with research activity in mind.
 You can read mode about PRL in our 
-[blogpost](https://medium.com/asap-report/prl-a-novel-approach-to-building-a-reinforcement-learning-framework-in-python-208cb8ae9349?sk=ea595f44fc8bd3f2aa4416c997d16891), 
+[introductory blog post](https://medium.com/asap-report/prl-a-novel-approach-to-building-a-reinforcement-learning-framework-in-python-208cb8ae9349?sk=ea595f44fc8bd3f2aa4416c997d16891),
+[in-depth look into library blog post](https://medium.com/asap-report/in-depth-look-into-prl-the-new-reinforcement-learning-framework-in-python-7ac57c282a61?source=friends_link&sk=f9c062f9ac8fd045d71f7319872e44b5), 
 [documentation](https://prl.readthedocs.io/en/latest/index.html) or
 [wiki](https://gitlab.com/opium-sh/prl/wikis/home).
 
