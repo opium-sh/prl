@@ -1,0 +1,25 @@
+name: CI
+
+on: [push]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+    env:
+      ITERATIONS_NUMBER: 4
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+    - name: Install requirements
+      run: |
+            virtualenv venv
+            source venv/bin/activate
+            pip install -e .
+            pip install -r requirements.txt
+    - name: Run tests
+      run: |
+            ls examples/*.py|xargs -t -n 1 -I '{}' timeout 4m python '{}' --n_iterations $ITERATIONS_NUMBER
