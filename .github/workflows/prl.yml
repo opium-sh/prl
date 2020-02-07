@@ -24,6 +24,12 @@ jobs:
             source venv/bin/activate
             pip install -e .
             pip install -r requirements.txt
+    - name: Cache
+      id: cache
+      uses: actions/cache@v1
+      with:
+          path: venv
+          key: prl-venv-cache
     - name: Run tests
       run: |
             ls examples/*.py|xargs -t -n 1 -I '{}' timeout 4m python '{}' --n_iterations $ITERATIONS_NUMBER
