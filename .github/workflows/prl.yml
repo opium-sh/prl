@@ -5,22 +5,26 @@ on: [push]
 jobs:
   test:
 
-    runs-on: ubuntu-latest
+    runs-on: python:3.6
     env:
       ITERATIONS_NUMBER: 4
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python 3.8
+    - name: Set up Python 3.6
       uses: actions/setup-python@v1
       with:
-        python-version: 3.8
+        python-version: 3.6
     - name: Install requirements
       run: |
-            pip3 install virtualenv
+            apt-get update
+            apt-get -y install swig
+            pip install --upgrade pip
+            pip install http://download.pytorch.org/whl/cpu/torch-0.4.1-cp36-cp36m-linux_x86_64.whl
+            pip install virtualenv torchvision
             virtualenv venv
             source venv/bin/activate
-            pip3 install -e .
-            pip3 install -r requirements.txt
+            pip install -e .
+            pip install -r requirements.txt
     - name: Run tests
       run: |
             ls examples/*.py|xargs -t -n 1 -I '{}' timeout 4m python '{}' --n_iterations $ITERATIONS_NUMBER
