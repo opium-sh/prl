@@ -5,7 +5,7 @@ on: [push]
 jobs:
   test:
 
-    runs-on: python:3.6
+    runs-on: ubuntu-latest
     env:
       ITERATIONS_NUMBER: 4
     steps:
