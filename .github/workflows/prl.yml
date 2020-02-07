@@ -16,7 +16,7 @@ jobs:
         python-version: 3.6
     - name: Install requirements
       run: |
-            apt-get -y install swig
+            sudo apt-get -y install swig
             pip install --upgrade pip
             pip install http://download.pytorch.org/whl/cpu/torch-0.4.1-cp36-cp36m-linux_x86_64.whl
             pip install virtualenv torchvision
