@@ -14,7 +14,7 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: 3.6
-    - name: Install requirements
+    - name: Run tets
       run: |
             sudo apt-get -y install swig
             pip install --upgrade pip
@@ -24,12 +24,11 @@ jobs:
             source venv/bin/activate
             pip install -e .
             pip install -r requirements.txt
+            ls examples/*.py|xargs -t -n 1 -I '{}' timeout 4m python '{}' --n_iterations $ITERATIONS_NUMBER
     - name: Cache
       id: cache
       uses: actions/cache@v1
       with:
           path: venv
           key: prl-venv-cache
-    - name: Run tests
-      run: |
-            ls examples/*.py|xargs -t -n 1 -I '{}' timeout 4m python '{}' --n_iterations $ITERATIONS_NUMBER
+            
