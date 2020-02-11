@@ -3,6 +3,8 @@
 ![](https://img.shields.io/badge/python-3.6-blue.svg)
 ![](https://img.shields.io/badge/code%20style-black-000000.svg)
 ![](https://readthedocs.org/projects/prl/badge/?version=latest)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3662113.svg)](https://doi.org/10.5281/zenodo.3662113)
+
 
 ## Description
 
