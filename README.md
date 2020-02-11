@@ -55,3 +55,10 @@ We recommend using ```virtualenv``` for installing project dependencies.
    cd examples
    python cart_pole_example_cross_entropy.py
    ```
+   
+## Citation
+
+If you use PRL in your work or research please cite us as:
+
+Tempczyk, P., Sliwowski, M., Kozakowski, P., Smuda, P., Topolski, B., Nabrdalik, F., & Malisz, T. (2020). opium-sh/prl: First release of Peoples’s Reinforcement Learning (PRL). Zenodo. https://doi.org/10.5281/ZENODO.3662113
+
