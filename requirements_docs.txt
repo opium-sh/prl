@@ -16,7 +16,7 @@ scipy==1.1.0
 six==1.11.0
 sklearn==0.0
 tensorboardX==1.4
-urllib3==1.24.2
+urllib3==1.26.5
 pyriemann==0.2.5
 mne==0.16.2
 matplotlib==2.2.3
