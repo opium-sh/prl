@@ -3,7 +3,7 @@ chardet==3.0.4
 future==0.16.0
 gym==0.10.5
 idna==2.7
-numpy==1.15.1
+numpy==1.22.0
 pandas==0.23.4
 Pillow==6.2.0
 protobuf==3.6.1
